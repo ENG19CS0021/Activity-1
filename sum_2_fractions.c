@@ -1,3 +1,4 @@
+ 
 #include<stdio.h>
 struct fract
 {
@@ -14,20 +15,31 @@ fraction input()
     scanf("%d",&(a.deno));
     return a;
 }
+int gcd(int a, int b)
+{
+    int g=1;
+    for(int i=2;i<=a && i<=b;i++)
+    {
+        if(a%i==0 && i<=b; i++)
+         { 
+            g=i;
+         }
+    }
+  return g;
+} 
 fraction sum(fraction a, fraction b)
 {
     fraction res;
-    if(a.deno==b.deno)
-    {
-        res.deno=a.deno;
-        res.nume=a.nume+b.nume;
-    }
-    else
-    {
-        res.deno=a.deno*b.deno;
-        res.nume=(a.nume*b.deno)+(b.nume*a.deno);
-    }
-    return res;
+    res.deno=a.deno*b.deno;
+    res.nume=(a.nume*b.deno)+(b.nume*a.deno);
+    int g=gcd(rs.nume,res.deno);
+    res.nume=res.nume/g;
+    res.deno=res.deno/g;
+       return res;
+}
+void output(fraction a, fraction b, fraction c)
+{
+   printf(“The sum of %d / %d and %d / %d is %d / %d”, a.nume, a.deno, b.nume, b.deno, c.nume, c.deno);
 }
 
 int main()
@@ -36,7 +48,7 @@ int main()
     a=input();
     b=input();
     c=sum(a,b);
-    printf("the final sum is %d / %d",c.nume,c.deno);
-    return 0;
+    output(a,b,c);
+       return 0;
 }
 
